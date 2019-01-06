@@ -11,10 +11,10 @@
           <!--<input ngModel name="firstName" id="firstName" type="text" class="form-control">-->
           <!--now we need to show you what is happened under the hood, so we will comment
           previous one, and create "template value" and function called "log", and we will
-        pass this "template value" to the log so we can debug this value-->
+          pass this "template value" to the log so we can debug this value-->
     
-        <!--Now we will comment below line to add extra validation errors-->
-        <!--<input required ngModel name="firstName" #firstName="ngModel" (change)="log(firstName)" id="firstName" type="text" class="form-control">-->
+          <!--Now we will comment below line to add extra validation errors-->
+          <!--<input required ngModel name="firstName" #firstName="ngModel" (change)="log(firstName)" id="firstName" type="text" class="form-control">-->
     
         <input required minlength="3" maxlength="10" pattern="banana" ngModel name="firstName" #firstName="ngModel" (change)="log(firstName)" id="firstName" type="text" class="form-control">
         <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid">
@@ -30,5 +30,5 @@
    <label for="comment">Comment</label>
    <textarea ngModel name="comment" id="comment" cols="30" rows="10" class="form-control"></textarea>
   </div>
-  <button class="btn btn-primary">Submit</button>
+  <button class="btn btn-primary" [disabled]="!f.valid">Submit</button>
 </form>
