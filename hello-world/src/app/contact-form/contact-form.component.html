@@ -1,8 +1,18 @@
 <form>
   <div class="form-group">
       <label for="firstName">First Name</label>
-      <input id="firstName" type="text" class="form-control">
-  </div>
+      <!--<input ngModel id="firstName" type="text" class="form-control">-->
+      <!--previous one will create an error because ngModel when used with "input" 
+      it need to be added with "attribute" called "name" because ngModel need to distingish
+      this control object -->
+      
+      <input ngModel name="firstName" id="firstName" type="text" class="form-control">
+      <!--now we need to show you what is happened under the hood, so we will comment
+      previous one, and create "template value" and function called "log", and we will
+    pass this "template value" to the log so we can debug this value-->
+
+    <input ngModel name="firstName" #firstName="ngModel" (change)="log(firstName)" id="firstName" type="text" class="form-control">
+    </div>
  <div class="form-group">
    <label for="comment">Comment</label>
    <textarea id="comment" cols="30" rows="10" class="form-control"></textarea>

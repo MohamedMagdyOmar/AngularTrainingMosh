@@ -2,3 +2,9 @@ in this section:
 1- implement forms with different kinds of input fields
 2- display validation errors
 3- disable the submit button.
+
+-ngModel:
+- now we need to add validation to the form we have created using template driven approach.
+- so in "template driven" we apply a "directive" to the "input" field, and angular
+will create a "control object" associated with this "input field".
+- this directive is "ngModel"
