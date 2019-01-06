@@ -16,3 +16,6 @@ we see that after we passed the varia
 
 - in previous example <form></form>, angular by default creates "ngform", check the exampleto see how angular creates for you
 ngform automatically. also ngForm exposes "outputs" (check angular doc) that can be used as event binding.
+
+ngModelGroup:
+- 
