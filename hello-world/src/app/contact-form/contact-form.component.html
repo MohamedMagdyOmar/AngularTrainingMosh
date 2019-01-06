@@ -11,7 +11,7 @@
       previous one, and create "template value" and function called "log", and we will
     pass this "template value" to the log so we can debug this value-->
 
-    <input ngModel name="firstName" #firstName="ngModel" (change)="log(firstName)" id="firstName" type="text" class="form-control">
+    <input required ngModel name="firstName" #firstName="ngModel" (change)="log(firstName)" id="firstName" type="text" class="form-control">
     <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid">First Name Is Required</div>
   </div>
  <div class="form-group">
