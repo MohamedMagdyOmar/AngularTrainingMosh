@@ -12,4 +12,9 @@ export class ContactFormComponent  {
     console.log(ngModel);
   }
 
+  submit(f)
+  {
+    console.log(f);
+  }
+
 }

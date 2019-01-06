@@ -7,4 +7,12 @@ in this section:
 - now we need to add validation to the form we have created using template driven approach.
 - so in "template driven" we apply a "directive" to the "input" field, and angular
 will create a "control object" associated with this "input field".
-- this directive is "ngModel"
+- this directive is "ngModel".
+
+-ngForm:
+- when we used "ngModel" we found that angular creates "formControl" under the hood, and 
+we see that after we passed the varia
+- we have also in angular another control called "FormGroup" that have multiple forms
+
+- in previous example <form></form>, angular by default creates "ngform", check the exampleto see how angular creates for you
+ngform automatically. also ngForm exposes "outputs" (check angular doc) that can be used as event binding.
