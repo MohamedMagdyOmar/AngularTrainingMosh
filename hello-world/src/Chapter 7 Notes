@@ -1,0 +1,38 @@
+in this section:
+1- implement forms with different kinds of input fields
+2- display validation errors
+3- disable the submit button.
+
+-ngModel:
+- now we need to add validation to the form we have created using template driven approach.
+- so in "template driven" we apply a "directive" to the "input" field, and angular
+will create a "control object" associated with this "input field".
+- this directive is "ngModel".
+
+-ngForm:
+- when we used "ngModel" we found that angular creates "formControl" under the hood, and 
+we see that after we passed the varia
+- we have also in angular another control called "FormGroup" that have multiple forms
+
+- in previous example <form></form>, angular by default creates "ngform", check the exampleto see how angular creates for you
+ngform automatically. also ngForm exposes "outputs" (check angular doc) that can be used as event binding.
+
+-Recap:
+- in angular we have 2 classes to keep track of the state of the input field, and their
+validity.
+    - one is "FormControl" that represent one input field.
+    - and "FormGroup" that represent group of input field.
+
+- when we apply "ngModel" directive on input field, angular automatically creates 
+"FormControl" Object, and associates this object with the input field.
+
+- for "FormGroup" we have directive called "ngForm" that is automatically applied to all "form" element.
+and this will internally creates "FormGroup" object and associates it with your form, and with
+this "FormGroup" object we can track the state change of the form and its validity.
+
+- if we have complex form with multiple subgroups, optionally apply "ngModelGroup" on the subgroup.
+this is similar to "ngForm" directive, and it will also create "FormGroup" object for that group.
+
+- so what is difference between "ngForm" and "ngModelGroup"?
+"ngForm" exposes an "output" property that was used to handle submit event of a form,
+"ngModelGroup" does not have this property

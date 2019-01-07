@@ -5,7 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CourseComponent } from './course/course.component';
 import { FavoriteComponent } from './Favorite/favorite.component';
-import { FormsModule } from '@angular/forms'
+import { FormsModule } from '@angular/forms';
+import { ContactFormComponent } from './contact-form/contact-form.component'
 
 
 // 2- second step is to register created component in "module"
@@ -17,7 +18,8 @@ import { FormsModule } from '@angular/forms'
   declarations: [
     AppComponent,
     CourseComponent,
-    FavoriteComponent
+    FavoriteComponent,
+    ContactFormComponent
   ],
   imports: [
     BrowserModule,
