@@ -1,3 +1,4 @@
+import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CoursesService } from './Courses.Service';
@@ -6,7 +7,8 @@ import { AppComponent } from './app.component';
 import { CourseComponent } from './course/course.component';
 import { FavoriteComponent } from './Favorite/favorite.component';
 import { FormsModule } from '@angular/forms';
-import { ContactFormComponent } from './contact-form/contact-form.component'
+import { ContactFormComponent } from './contact-form/contact-form.component';
+import { PostComponent } from './post/post.component'
 
 
 // 2- second step is to register created component in "module"
@@ -19,12 +21,14 @@ import { ContactFormComponent } from './contact-form/contact-form.component'
     AppComponent,
     CourseComponent,
     FavoriteComponent,
-    ContactFormComponent
+    ContactFormComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpModule
   ],
   providers: [CoursesService],
   bootstrap: [AppComponent]
