@@ -1,0 +1,5 @@
+agenda:
+1- perform CRUD Operations
+2- Extract a reusable data service
+3- property handle different kind od errors
+4- build applications with proper seperation of concerns
