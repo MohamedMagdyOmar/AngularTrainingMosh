@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Http } from '@angular/http';
-import { Response } from 'selenium-webdriver/http';
 
 @Component({
   selector: 'post',
@@ -9,9 +8,11 @@ import { Response } from 'selenium-webdriver/http';
 })
 export class PostComponent{
   posts: any[];
+  private urlLink: string = "https://jsonplaceholder.typicode.com/posts";
+
   // we use "http" class to get the data or save the data, to send 
   // request to the backend
-  constructor(http: Http) 
+  constructor(private http: Http) 
   { 
     // this method return "observable" of a response
     // we use "promises" and "observable" to work with async or non
@@ -30,11 +31,23 @@ export class PostComponent{
     // optional, the next parameter is "arrow function" that takes value and return void
 
    
-    http.get("https://jsonplaceholder.typicode.com/posts")
+    http.get(this.urlLink)
     .subscribe(response => {
       this.posts = response.json();
       //console.log(response);
     })
+
+   
+  }
+
+  CreatePost(input: HTMLDataElement)
+  {
+    let post = {title: input.value}
+    this.http.post(this.urlLink, JSON.stringify(post)).subscribe(response => {
+      console.log(response);
+      this.posts.splice(0, 0, post);
+    })
+    
   }
 
 

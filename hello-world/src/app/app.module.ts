@@ -26,11 +26,9 @@ import { PostComponent } from './post/post.component'
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     FormsModule,
     HttpModule
   ],
-  providers: [CoursesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
