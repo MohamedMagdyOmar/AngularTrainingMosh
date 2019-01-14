@@ -16,6 +16,7 @@ export class PostComponent{
     // this method return "observable" of a response
     // we use "promises" and "observable" to work with async or non
     // blocking operations.
+
     // Because we call a server for this data, so this data is not
     // available immediately, so there are some delays.
     // so we donot need to block the main thread untill we retrieve data,
@@ -30,8 +31,9 @@ export class PostComponent{
 
    
     http.get("https://jsonplaceholder.typicode.com/posts")
-    .subscribe(Response => {
-      this.posts = Response.json();
+    .subscribe(response => {
+      this.posts = response.json();
+      //console.log(response);
     })
   }
 
