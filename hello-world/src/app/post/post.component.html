@@ -2,6 +2,6 @@
 
 <ul class="list-group">
   <li *ngFor="let post of posts" class="list-group-item">
-    <button class="button button-default" (click) = "CreatePut(post)">Update</button>
+    <button class="button button-default" (click) = "DeletePost(post)">Delete</button>
     {{post.title}}</li>
 </ul>

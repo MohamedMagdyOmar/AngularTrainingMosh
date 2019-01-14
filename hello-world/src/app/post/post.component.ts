@@ -57,5 +57,12 @@ export class PostComponent{
     })
   }
 
-
+  DeletePost(post)
+  {
+    this.http.delete(this.urlLink + '/' + post.id).subscribe(response =>{
+      console.log(post);
+      let index = this.posts.indexOf(post);
+      this.posts.splice(index, 1);
+    })
+  }
 }
