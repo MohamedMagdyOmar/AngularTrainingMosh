@@ -50,5 +50,12 @@ export class PostComponent{
     
   }
 
+  CreatePut(post)
+  {
+    this.http.patch(this.urlLink + '/' + post.id, JSON.stringify(post.id)).subscribe(response => {
+      console.log(response);
+    })
+  }
+
 
 }
