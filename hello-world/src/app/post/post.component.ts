@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 
 @Component({
@@ -6,7 +6,7 @@ import { Http } from '@angular/http';
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.css']
 })
-export class PostComponent{
+export class PostComponent implements OnInit{
   posts: any[];
   private urlLink: string = "https://jsonplaceholder.typicode.com/posts";
 
@@ -37,8 +37,17 @@ export class PostComponent{
       //console.log(response);
     })
 
-   
   }
+
+  ngOnInit()
+  {
+    this.http.get(this.urlLink)
+    .subscribe(response => {
+    this.posts = response.json();
+    })
+
+  }
+
 
   CreatePost(input: HTMLDataElement)
   {
@@ -66,3 +75,13 @@ export class PostComponent{
     })
   }
 }
+
+// As best practise, constructor should be light weight and small, it should not have expensive operations like calling server
+// Components in angular have "Life Cycle Hooks", they are some methods that can be added to components and angular will automatically
+// call these methods @ specific time during life cycle of the component.
+
+// example of angular life cycle hooks:
+  // 1- Creating component
+  // 2- renders it
+  // 3- creating or rendering component's child
+  // 4- destroy components
