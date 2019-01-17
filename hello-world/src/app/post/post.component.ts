@@ -42,6 +42,8 @@ export class PostComponent implements OnInit{
     this.service.getPosts()
     .subscribe(response => {
       this.posts = response.json();
+    }, error => {
+      console.log(error)
     })
 
   }
@@ -53,6 +55,8 @@ export class PostComponent implements OnInit{
     this.service.CreatePosts(post).subscribe(response => {
       console.log(response);
       this.posts.splice(0, 0, post);
+    }, error =>{
+      console.log(error)
     })
     
   }
@@ -62,6 +66,8 @@ export class PostComponent implements OnInit{
     this.service.UpdatePost(post).
     subscribe(response => {
       console.log(response);
+    }, error => {
+      console.log(error)
     })
   }
 
@@ -71,6 +77,8 @@ export class PostComponent implements OnInit{
       console.log(post);
       let index = this.posts.indexOf(post);
       this.posts.splice(index, 1);
+    }, error => {
+      console.log(error)
     })
   }
 }
