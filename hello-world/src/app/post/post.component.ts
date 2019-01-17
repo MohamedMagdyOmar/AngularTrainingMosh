@@ -66,19 +66,40 @@ export class PostComponent implements OnInit{
     this.service.UpdatePost(post).
     subscribe(response => {
       console.log(response);
-    }, error => {
-      console.log(error)
+    }, (error: Response) => {
+      if(error.status === 400)
+      {
+
+      }
+      else
+      {
+        console.log(error)
+      }
+      
     })
   }
 
   DeletePost(post)
   {
-    this.service.DeletePost(post.id).subscribe(response =>{
-      console.log(post);
-      let index = this.posts.indexOf(post);
-      this.posts.splice(index, 1);
-    }, error => {
-      console.log(error)
+    this.service.DeletePost(-4234124500)
+    .subscribe(
+      response =>{
+        let index = this.posts.indexOf(post);
+        this.posts.splice(index, 1);
+        //console.log(response.json())
+        },
+         (error: Response) => {     
+            if(error.status === 404)
+              {
+                console.log("Hey Mohammad")
+                  alert("This Post Already Deleted")
+              }
+            else
+              {
+                alert("UnExpected Error Ocurred")
+                console.log(error)
+            }
+      
     })
   }
 }
