@@ -1,5 +1,5 @@
+import { PostService } from './../Services/post.service';
 import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
 
 @Component({
   selector: 'post',
@@ -8,11 +8,11 @@ import { Http } from '@angular/http';
 })
 export class PostComponent implements OnInit{
   posts: any[];
-  private urlLink: string = "https://jsonplaceholder.typicode.com/posts";
+  
 
   // we use "http" class to get the data or save the data, to send 
   // request to the backend
-  constructor(private http: Http) 
+  constructor(public service: PostService) 
   { 
     // this method return "observable" of a response
     // we use "promises" and "observable" to work with async or non
@@ -31,19 +31,17 @@ export class PostComponent implements OnInit{
     // optional, the next parameter is "arrow function" that takes value and return void
 
    
-    http.get(this.urlLink)
-    .subscribe(response => {
-      this.posts = response.json();
+
       //console.log(response);
-    })
+    
 
   }
 
   ngOnInit()
   {
-    this.http.get(this.urlLink)
+    this.service.getPosts()
     .subscribe(response => {
-    this.posts = response.json();
+      this.posts = response.json();
     })
 
   }
@@ -52,7 +50,7 @@ export class PostComponent implements OnInit{
   CreatePost(input: HTMLDataElement)
   {
     let post = {title: input.value}
-    this.http.post(this.urlLink, JSON.stringify(post)).subscribe(response => {
+    this.service.CreatePosts(post).subscribe(response => {
       console.log(response);
       this.posts.splice(0, 0, post);
     })
@@ -61,14 +59,15 @@ export class PostComponent implements OnInit{
 
   CreatePut(post)
   {
-    this.http.patch(this.urlLink + '/' + post.id, JSON.stringify(post.id)).subscribe(response => {
+    this.service.UpdatePost(post).
+    subscribe(response => {
       console.log(response);
     })
   }
 
   DeletePost(post)
   {
-    this.http.delete(this.urlLink + '/' + post.id).subscribe(response =>{
+    this.service.DeletePost(post.id).subscribe(response =>{
       console.log(post);
       let index = this.posts.indexOf(post);
       this.posts.splice(index, 1);

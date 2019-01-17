@@ -1,11 +1,13 @@
+import { AppComponent } from './app.component';
+import { PostService } from './Services/post.service';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { CoursesService } from './Courses.Service';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { CourseComponent } from './course/course.component';
-import { FavoriteComponent } from './Favorite/favorite.component';
+//import { CoursesService } from './Courses.Service';
+//import { AppRoutingModule } from './app-routing.module';
+
+//import { CourseComponent } from './course/course.component';
+//import { FavoriteComponent } from './Favorite/favorite.component';
 import { FormsModule } from '@angular/forms';
 import { ContactFormComponent } from './contact-form/contact-form.component';
 import { PostComponent } from './post/post.component'
@@ -19,8 +21,6 @@ import { PostComponent } from './post/post.component'
   // to this "module"
   declarations: [
     AppComponent,
-    CourseComponent,
-    FavoriteComponent,
     ContactFormComponent,
     PostComponent
   ],
@@ -29,6 +29,13 @@ import { PostComponent } from './post/post.component'
     FormsModule,
     HttpModule
   ],
-  bootstrap: [AppComponent]
+
+  providers:[
+    PostService,
+   // CoursesService
+  ],
+
+  bootstrap: [AppComponent],
+  
 })
 export class AppModule { }
