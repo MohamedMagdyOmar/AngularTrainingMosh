@@ -34,14 +34,7 @@ export class PostService implements OnInit {
   CreatePosts(post)
   {
     return this.http.post(this.urlLink, JSON.stringify(post))
-    .pipe(catchError((error: Response) =>{
-      if(error.status === 400)
-        return Observable.throw(new BadInput(error.json()));
-      
-      return Observable.throw(new AppError(error.json()));
-        
-
-    }))
+    .pipe(catchError(this.handleError))
   }
 
   UpdatePost(post)
@@ -52,11 +45,22 @@ export class PostService implements OnInit {
   DeletePost(id)
   {
     console.log(this.urlLink + '/' + id)
-    return this.http.delete(this.urlLink + '/' + id).pipe(catchError((error : Response) =>{
-      if(error.status === 404)
-        return Observable.throw(new NotFoundError)
-      return Observable.throw(new AppError(error));
-      
-    }));
+    // this.handleError, this is not calling a function, it is passing reference
+    return this.http.delete(this.urlLink + '/' + id).pipe(catchError(this.handleError))    
+  }
+
+  private handleError(error: Response)
+  {
+    if(error.status === 404)
+    {
+      return Observable.throw(new NotFoundError)
+    }
+
+    if(error.status === 400)
+    {
+      return Observable.throw(new BadInput(error.json()));
+    }
+
+    return Observable.throw(new AppError(error));
   }
 }
