@@ -1,8 +1,9 @@
+import { AppErrorHandler } from './common/app-error-handler';
 import { AppComponent } from './app.component';
 import { PostService } from './Services/post.service';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 //import { CoursesService } from './Courses.Service';
 //import { AppRoutingModule } from './app-routing.module';
 
@@ -32,6 +33,8 @@ import { PostComponent } from './post/post.component'
 
   providers:[
     PostService,
+    // you are telling ngular instead of using Angular Default ErrorHandler, use my own handler AppErrorHanlder
+    {provide: ErrorHandler, useClass: AppErrorHandler}
    // CoursesService
   ],
 

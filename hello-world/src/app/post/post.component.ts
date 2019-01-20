@@ -1,3 +1,4 @@
+import { BadInput } from './../common/bad-input';
 import { AppError } from './../common/app-error';
 import { PostService } from './../Services/post.service';
 import { Component, OnInit } from '@angular/core';
@@ -44,9 +45,10 @@ export class PostComponent implements OnInit{
     this.service.getPosts()
     .subscribe(response => {
       this.posts = response.json();
-    }, error => {
-      console.log(error)
-    })
+    }//, error => {
+      //console.log(error)
+    //}
+    )
 
   }
 
@@ -57,8 +59,18 @@ export class PostComponent implements OnInit{
     this.service.CreatePosts(post).subscribe(response => {
       console.log(response);
       this.posts.splice(0, 0, post);
-    }, error =>{
-      console.log(error)
+    }, 
+    
+    (error:AppError) =>{
+      if(error instanceof BadInput){
+        //this.form.setError(error.originalError)
+      }
+      else{
+        // it will not use angular error handler, but it will use your error handler
+        throw error;
+        //alert('an UnExpected Error')
+        //console.log(error);
+      }
     })
     
   }
@@ -83,7 +95,8 @@ export class PostComponent implements OnInit{
 
   DeletePost(post)
   {
-    this.service.DeletePost(-4234124500)
+    console.log(post)
+    this.service.DeletePost(345)
     .subscribe(
       response =>{
         let index = this.posts.indexOf(post);
@@ -98,8 +111,7 @@ export class PostComponent implements OnInit{
               }
             else
               {
-                alert("UnExpected Error Ocurred")
-                console.log(error)
+                throw error;
             }
       
     })
